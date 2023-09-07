@@ -76,9 +76,28 @@
 
 We observe data $\{(x^{(n)}, y^{(n)})\}_{n = 1}^{N}$, with $y\in\{0, 1\}$, Using maximum likehood:
 \begin{align*}
-        L(w)
+        L(\mathbf{w}) &= P(y^{(1)}|\mathbf{x}^{(1)};\mathbf{w})\cdot P(y^{(2)}|\mathbf{x}^{(2)};\mathbf{w})\cdots P(y^{(n)}|\mathbf{x}^{(n)};\mathbf{w})\\
+             &= \prod\limits_{n = 1}^{N}P(y^{(n)}|\mathbf{x}^{(n)};\mathbf{w})
 \end{align*}
-
+minimising the negative log likehood
+\begin{align*}
+        J(\mathbf{w}) &= -\log{L(\mathbf{w})} = -\log{\prod\limits_{n = 1}^{N}P(y^{(n)}|\mathbf{x}^{(n)};\mathbf{w})} = - \sum\limits_{n = 1}^{N}\log{P(y^{(n)}|\mathbf{x}^{(n)};\mathbf{w})}\\
+        &(*)\; P(y|\mathbf{x};\mathbf{w}) =\left\{
+        \begin{array}{ccc}
+                f(\mathbf{x};\mathbf{w}) & if & y = 1\\
+                1 - f(\mathbf{x};\mathbf{y}) & if & y = 0
+        \end{array}
+        \right. = 
+        \left\{
+        \begin{array}{ccc}
+                \sigma(\mathbf{w}^{T};\mathbf{x}) & if & y = 1\\
+                1 - \sigma(\mathbf{w}^{T};\mathbf{x}) & if & y = 0
+        \end{array}
+        \right.\\
+        &\implies P(y|\mathbf{x};\mathbf{w}) = \sigma(\mathbf{w}^{T};\mathbf{x})^{y}(1 - \sigma(\mathbf{w}^{T};\mathbf{x}))^{1 - y}\\
+        &= -\sum\limits_{n = 1}^{N} \log{[\sigma(\mathbf{w}^{T};\mathbf{x}^{(n)})^{y}(1 - \sigma(\mathbf{w}^{T};\mathbf{x}^{(n)})^{1-y^{(n)}})]}\\
+        &= -\sum\limits_{n = 1}^{N} [\log{\sigma(\mathbf{w}^{T};\mathbf{x}^{(n)})^{y}} + (1 - y^{(n)})\cdot\log(1 - \sigma(\mathbf{w}^{T};\mathbf{x}^{(n)}))]
+\end{align*}
 
 
 
