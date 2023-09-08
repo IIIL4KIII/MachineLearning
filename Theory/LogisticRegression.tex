@@ -188,8 +188,22 @@ We define a binary classificator to each class, after that, we attribute a new s
 In this strategy, each classificator is trained using all samples of the training set.
 
 
-
-
+{\Large\textbf{Softmax Regression}}
+For binary regression we had $f(\mathbf{w};\mathbf{x}) = \sigma(\mathbf{w}^{T}\mathbf{x}) = \frac{1}{1 + e^{-\mathbf{w}^{T}\mathbf{x}}}$ with $y\in[0, 1]$. We interpreted
+the output as $P(y = 1|\mathbf{x};\mathbf{x})$, implying $P(y = 0|\mathbf{x}^{T};\mathbf{w}) = 1 - f(\mathbf{x};\mathbf{w})$.
+For the multiclass setting we now have $y\in\{1, 2, \dots, K\}$. Ideia: instead of just outputting a single value for the positive class, let's output a vector
+of probabiblities for aech class:
+\begin{align*}
+        \mathbf{f}(\mathbf{x};\mathbf{W}) = \left[
+                \begin{array}{c}
+                        P(y = 1|\mathbf{x};\mathbf{W}_1)\\
+                        P(y = 2|\mathbf{x};\mathbf{W}_2)\\
+                        \vdots\\
+                        P(y = K|\mathbf{x};\mathbf{W}_K)
+                \end{array}
+                \right]
+\end{align*}
+We will now build up to a model that does this. 
 
 
 

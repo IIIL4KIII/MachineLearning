@@ -1,7 +1,7 @@
 # Fdb version 4
-["pdflatex"] 1694137234 "/home/lucas-renan/Desktop/Github/MachineLearning/Theory/LogisticRegression.tex" "LogisticRegression.pdf" "LogisticRegression" 1694137236 0
+["pdflatex"] 1694147987 "/home/lucas-renan/Desktop/Github/MachineLearning/Theory/LogisticRegression.tex" "LogisticRegression.pdf" "LogisticRegression" 1694147989 0
   "/etc/texmf/web2c/texmf.cnf" 1694121307 475 c0e671620eb5563b2130f56340a5fde8 ""
-  "/home/lucas-renan/Desktop/Github/MachineLearning/Theory/LogisticRegression.tex" 1694137234 8655 dcd2e5abc4cd3fdc9ee0fcb316efedd0 ""
+  "/home/lucas-renan/Desktop/Github/MachineLearning/Theory/LogisticRegression.tex" 1694147987 9601 712c2c51a6ada42e1666045b9823f89f ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/jknappen/ec/ecrm1095.tfm" 1136768653 3584 929cdff2b7a8c11bd4d49fd68cb0ae70 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/symbols/msam10.tfm" 1246382020 916 f87d7c45f9c908e672703b83b72241a3 ""
@@ -259,6 +259,7 @@
   "/usr/share/texmf/fonts/tfm/public/lm/ts1-lmr10.tfm" 1254269338 1556 b86d923e6b2f9aab2e313098a95cb0b8 ""
   "/usr/share/texmf/fonts/type1/public/lm/lmbx10.pfb" 1255129361 121021 1bf809ce4a594679006bd72263eba59b ""
   "/usr/share/texmf/fonts/type1/public/lm/lmbx12.pfb" 1255129361 116908 1fca96723793882c2e0160350c192fc8 ""
+  "/usr/share/texmf/fonts/type1/public/lm/lmbx6.pfb" 1255129361 123928 f1dd00d394b594999dc15fd8014bed65 ""
   "/usr/share/texmf/fonts/type1/public/lm/lmbx8.pfb" 1255129361 125241 1d6de6a4ab0d08571b46009b6426dace ""
   "/usr/share/texmf/fonts/type1/public/lm/lmex10.pfb" 1254269338 23055 2e5b42921de910eaa97b85df04ca4891 ""
   "/usr/share/texmf/fonts/type1/public/lm/lmmi10.pfb" 1254269338 30388 702fae6a5f0e6e9c48a1d872b442ffcf ""
@@ -269,6 +270,7 @@
   "/usr/share/texmf/fonts/type1/public/lm/lmr6.pfb" 1255129361 123394 d390152bb30feeb496aaaa93299ee9ba ""
   "/usr/share/texmf/fonts/type1/public/lm/lmr8.pfb" 1255129361 122174 a7a08406857c9530a0320a2517f60370 ""
   "/usr/share/texmf/fonts/type1/public/lm/lmsy10.pfb" 1254269338 27863 09ce3735688ffde955e72da27c95b61a ""
+  "/usr/share/texmf/fonts/type1/public/lm/lmsy6.pfb" 1254269338 28109 6d61305ed3d0eb794ebe36f15cf44aa0 ""
   "/usr/share/texmf/fonts/type1/public/lm/lmsy8.pfb" 1254269338 27802 5c876bb2c4040caaf035d60bd74a86bd ""
   "/usr/share/texmf/tex/latex/lm/lmodern.sty" 1616454256 1608 b00724785a9e9c599e5181bb8729160b ""
   "/usr/share/texmf/tex/latex/lm/omllmm.fd" 1616454256 890 57f5adccd504fb5c98bdf99ed7e7f195 ""
@@ -281,9 +283,9 @@
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1694121329 4623455 fa0568a71dd9a288d6c226ee477506c6 ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1694121376 7880900 7f1744ee2f1078bfc1539cf931578023 ""
   "GD_problems.png" 1694128169 6997 54979ae059ed95c6c282ed7713cd9d08 ""
-  "LogisticRegression.aux" 1694137236 2644 21b03056ef2e47bdf2706d76537c72d9 "pdflatex"
-  "LogisticRegression.out" 1694137236 908 fe630dc5092871e29ab5a9f013b3fb31 "pdflatex"
-  "LogisticRegression.tex" 1694137234 8655 dcd2e5abc4cd3fdc9ee0fcb316efedd0 ""
+  "LogisticRegression.aux" 1694147989 2644 ced0512a9a10a680a32b8f74016ea2c1 "pdflatex"
+  "LogisticRegression.out" 1694147989 908 fe630dc5092871e29ab5a9f013b3fb31 "pdflatex"
+  "LogisticRegression.tex" 1694147987 9601 712c2c51a6ada42e1666045b9823f89f ""
   "decisionboundary.png" 1694134423 20445 1925fb0ab92f29b74139e57c87ba5bbc ""
   "iris.png" 1694130574 88339 f4e386018ba7b1090e62373a67c27665 ""
   "sigmoid.png" 1694134768 127688 47938c963ec2dc95fb35bb0f4ce5952f ""
