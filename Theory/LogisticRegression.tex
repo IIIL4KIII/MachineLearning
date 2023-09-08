@@ -187,6 +187,15 @@ We define a binary classificator to each class, after that, we attribute a new s
 
 In this strategy, each classificator is trained using all samples of the training set.
 
+Applying One-vs-All method, 
+\begin{figure}[H]
+        \centering
+        \includegraphics[scale=0.5]{test.png}
+        \includegraphics[scale=0.5]{OnevsAll.png}
+
+        \caption{One-vs-Rest method}
+\end{figure}
+
 
 {\Large\textbf{Softmax Regression}}
 For binary regression we had $f(\mathbf{w};\mathbf{x}) = \sigma(\mathbf{w}^{T}\mathbf{x}) = \frac{1}{1 + e^{-\mathbf{w}^{T}\mathbf{x}}}$ with $y\in[0, 1]$. We interpreted
@@ -204,6 +213,44 @@ of probabiblities for aech class:
                 \right]
 \end{align*}
 We will now build up to a model that does this. 
+
+Each element in $\mathbf{f}(\mathbf{x};\mathbf{W})$ should be a "score" for how well input $\mathbf{x}$ matches that class, for input $\mathbf{x}$, let's set the score for class $k$ to $\mathbf{w}_{k}^{T}\mathbf{x}$.
+But probabilities need to be positive, so let's take te exponential $e^{\mathbf{w}_{k}^{T}\mathbf{x}}$, but probabilities need to sum to one, normalising, we have
+\begin{equation}
+        P(y = k|\mathbf{x};\mathbf{w}_k) = \frac{e^{\mathbf{w}_{k}^{T}\mathbf{x}}}{\sum\limits_{j = 1}^{K}e^{\mathbf{w}_{j}^{T}\mathbf{x}}}
+\end{equation}
+
+This gives us the softmax regression model:
+
+\begin{equation*}
+        \mathbf{f}(\mathbf{x};\mathbf{W}) = \frac{1}{\sum\limits_{j = 1}^{K}e^{\mathbf{w}_{j}^{T}\mathbf{x}}}\left[\begin{array}{c}
+        e^{\mathbf{w}_{1}^{T}}\\
+        e^{\mathbf{w}_{2}^{T}}\\
+        \vdots\\
+        e^{\mathbf{w}_{k}^{T}}
+        \end{array}\right]
+\end{equation*}
+
+{\large Optimization}
+Fit model using maximum likelihood. Equivalent to minimising the negative log likelihood:
+\begin{align*}
+        J(\mathbf{W}) &= -\log{L(\mathbf{W})} = -\sum\limits_{n = 1}^{N}\log{P(y^{(n)}|\mathbf{x}^{(n)};\mathbf{W})}\\
+        &= -\sum\limits_{n = 1}^{N}\sum\limits_{k = 1}^{K}\mathbb{I}\{y^{(n)}=k\}\log{\frac{e^{\mathbf{x}_{k}^{T}\mathbf{x}^{(n)}}}{\sum\limits_{j = 1}^{K}e^{\mathbf{w}_j^{T}\mathbf{x}^{(n)}}}}
+\end{align*}
+Derivates:
+\begin{equation*}
+        \frac{\partial J(\mathbf{W})}{\partial\mathbf{w}_k} = -\sum\limits_{n = 1}^{N}\sum\limits_{k = 1}^{K}\left(\mathbb{I}\{y^{(n)}=k\} - f_k(\mathbf{x}^{(n)};\mathbf{w}_k)\right)\mathbf{x}^{(n)}
+\end{equation*}
+
+Using these derivates, we can minimise the loss using gradient descent.
+
+\begin{figure}[H]
+        \centering
+        \includegraphics[scale=0.5]{test.png}
+        \includegraphics[scale=0.5]{softmax.png}
+
+        \caption{Softmax method}
+\end{figure}
 
 
 
