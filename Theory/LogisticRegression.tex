@@ -167,6 +167,25 @@ This has the effect of offshering the decision boundary in $\mathbf{x}$-space.
 The lenght of $\mathbf{w}$, i.e. $||\mathbf{w}||$, inlfuences the "steepness" of the decision boundary, for very large $||\mathbf{w}||$, even points that are very
 close to the decision boundary will be assigned very high or low probabilities $P(y = 1|\mathbf{x}, \mathbf{w})$, with small $||\mathbf{w}||$, probability assignment will be more graual.
 
+\subsection{Basis function and regularisation}
+\textbf{Basis funcitons}:
+
+Anywhere we wrote an $\mathbf{x}$ the features vector $\mathbf{x}$ can be replaced with basis functions $\phi(\mathbf{x})$.
+
+\textbf{Regularization}:
+
+As in linear regression, we can perform regularised logistic regression by penalising the weights:
+\begin{align*}
+        J(\mathbf{w}) &= -\log{L(\mathbf{w})} + \lambda\sum\limits_{d = 1}^{D}w_{d}^{2}\\
+        &= - \sum\limits_{n = 1}^{N}[y^{(n)}\log{\sigma(\mathbf{w}^{T}\mathbf{x}^{(n)})} + (1 - y^{(n)})\log{(1 - \sigma(\mathbf{w}^{T}\mathbf{x}^{(n)}))}] + \lambda\sum\limits_{d = 1}^{D} w_{d}^{2}
+\end{align*}
+
+\subsection{Multiclass Logistic Regression}
+{\Large\textbf{One-vs-All Classification}}
+
+We define a binary classificator to each class, after that, we attribute a new sample with greater probabilitie.
+
+In this strategy, each classificator is trained using all samples of the training set.
 
 
 
