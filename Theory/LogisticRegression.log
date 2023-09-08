@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022/Debian) (preloaded format=pdflatex 2023.9.7)  7 SEP 2023 19:52
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022/Debian) (preloaded format=pdflatex 2023.9.7)  7 SEP 2023 22:13
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1021,6 +1021,10 @@ Package pgfplots notification 'compat/show suggested version=true': you might be
 File: translations-basic-dictionary-brazil.trsl (brazil translation file `translations-basic-dictionary')
 )
 Package translations Info: loading dictionary `translations-basic-dictionary' for `brazil'. on input line 52.
+LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 59.
+ (/usr/share/texmf/tex/latex/lm/ts1lmr.fd
+File: ts1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
+)
 LaTeX Font Info:    Trying to load font information for OT1+lmr on input line 59.
  (/usr/share/texmf/tex/latex/lm/ot1lmr.fd
 File: ot1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
@@ -1051,30 +1055,47 @@ LaTeX Font Info:    Trying to load font information for U+msb on input line 59.
  (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-<sigmoid.png, id=11, 399.05086pt x 313.4109pt>
+<sigmoid.png, id=19, 552.6246pt x 211.87155pt>
 File: sigmoid.png Graphic file (type png)
 <use sigmoid.png>
 Package pdftex.def Info: sigmoid.png  used on input line 69.
-(pdftex.def)             Requested size: 319.24112pt x 250.72905pt.
+(pdftex.def)             Requested size: 442.10028pt x 169.49745pt.
  [1
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <./sigmoid.png>] [2] (./LogisticRegression.aux)
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <./sigmoid.png>]
+<GD_problems.png, id=40, 702.625pt x 286.06876pt>
+File: GD_problems.png Graphic file (type png)
+<use GD_problems.png>
+Package pdftex.def Info: GD_problems.png  used on input line 115.
+(pdftex.def)             Requested size: 421.57825pt x 171.64258pt.
+ [2 <./GD_problems.png>]
+<iris.png, id=52, 722.7pt x 289.08pt>
+File: iris.png Graphic file (type png)
+<use iris.png>
+Package pdftex.def Info: iris.png  used on input line 132.
+(pdftex.def)             Requested size: 505.88655pt x 202.35461pt.
+<decisionboundary.png, id=53, 578.16pt x 216.81pt>
+File: decisionboundary.png Graphic file (type png)
+<use decisionboundary.png>
+Package pdftex.def Info: decisionboundary.png  used on input line 150.
+(pdftex.def)             Requested size: 462.52863pt x 173.44823pt.
+ [3 <./iris.png>] [4 <./decisionboundary.png>] (./LogisticRegression.aux)
 Package rerunfilecheck Info: File `LogisticRegression.out' has not changed.
-(rerunfilecheck)             Checksum: C3D313CE80A8C36CA3A2425463B59F94;179.
+(rerunfilecheck)             Checksum: CD86625AD59CF65D684EE683FF9420E1;464.
  ) 
 Here is how much of TeX's memory you used:
- 58153 strings out of 476091
- 1461757 string characters out of 5794082
- 2127966 words of memory out of 5000000
- 77825 multiletter control sequences out of 15000+600000
- 543427 words of font info for 56 fonts, out of 8000000 for 9000
+ 58236 strings out of 476091
+ 1463386 string characters out of 5794082
+ 2131296 words of memory out of 5000000
+ 77894 multiletter control sequences out of 15000+600000
+ 549789 words of font info for 59 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  117i,14n,118p,798b,902s stack positions out of 10000i,1000n,20000p,200000b,200000s
-{/usr/share/texmf/fonts/enc/dvips/lm/lm-rm.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathex.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-ec.enc}</usr/share/texmf/fonts/type1/public/lm/lmbx10.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx12.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx8.pfb></usr/share/texmf/fonts/type1/public/lm/lmex10.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi10.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi6.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi8.pfb></usr/share/texmf/fonts/type1/public/lm/lmr10.pfb></usr/share/texmf/fonts/type1/public/lm/lmr12.pfb></usr/share/texmf/fonts/type1/public/lm/lmr6.pfb></usr/share/texmf/fonts/type1/public/lm/lmr8.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy8.pfb>
-Output written on LogisticRegression.pdf (2 pages, 327154 bytes).
+{/usr/share/texmf/fonts/enc/dvips/lm/lm-rm.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathex.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-ec.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-ts1.enc}</usr/share/texmf/fonts/type1/public/lm/lmbx10.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx12.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx8.pfb></usr/share/texmf/fonts/type1/public/lm/lmex10.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi10.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi6.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi8.pfb></usr/share/texmf/fonts/type1/public/lm/lmr10.pfb></usr/share/texmf/fonts/type1/public/lm/lmr12.pfb></usr/share/texmf/fonts/type1/public/lm/lmr6.pfb></usr/share/texmf/fonts/type1/public/lm/lmr8.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy8.pfb>
+Output written on LogisticRegression.pdf (4 pages, 398388 bytes).
 PDF statistics:
- 110 PDF objects out of 1000 (max. 8388607)
- 76 compressed objects within 1 object stream
- 11 named destinations out of 1000 (max. 500000)
- 26 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 141 PDF objects out of 1000 (max. 8388607)
+ 98 compressed objects within 1 object stream
+ 18 named destinations out of 1000 (max. 500000)
+ 57 words of extra memory for PDF output out of 10000 (max. 10000000)
 
