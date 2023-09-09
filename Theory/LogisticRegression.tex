@@ -198,6 +198,7 @@ Applying One-vs-All method,
 
 
 {\Large\textbf{Softmax Regression}}
+
 For binary regression we had $f(\mathbf{w};\mathbf{x}) = \sigma(\mathbf{w}^{T}\mathbf{x}) = \frac{1}{1 + e^{-\mathbf{w}^{T}\mathbf{x}}}$ with $y\in[0, 1]$. We interpreted
 the output as $P(y = 1|\mathbf{x};\mathbf{x})$, implying $P(y = 0|\mathbf{x}^{T};\mathbf{w}) = 1 - f(\mathbf{x};\mathbf{w})$.
 For the multiclass setting we now have $y\in\{1, 2, \dots, K\}$. Ideia: instead of just outputting a single value for the positive class, let's output a vector
@@ -232,6 +233,7 @@ This gives us the softmax regression model:
 \end{equation*}
 
 {\large Optimization}
+
 Fit model using maximum likelihood. Equivalent to minimising the negative log likelihood:
 \begin{align*}
         J(\mathbf{W}) &= -\log{L(\mathbf{W})} = -\sum\limits_{n = 1}^{N}\log{P(y^{(n)}|\mathbf{x}^{(n)};\mathbf{W})}\\
