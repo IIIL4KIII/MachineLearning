@@ -1,0 +1,305 @@
+\documentclass{pssbmac}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% POR FAVOR, NÃO FAÇA MUDANÇAS NESSE PADRÃO QUE ACARRETEM  EM
+%% ALTERAÇÃO NA FORMATAÇÃO FINAL DO TEXTO
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% POR FAVOR, ESCOLHA CONFORME O CASO
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage[brazil]{babel} % texto em Português
+%\usepackage[english]{babel} % texto em Inglês
+
+%\usepackage[latin1]{inputenc} % acentuação em Português ISO-8859-1
+\usepackage[utf8]{inputenc} % acentuação em Português UTF-8
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% POR FAVOR, NÃO ALTERAR
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage[T1]{fontenc}
+\usepackage{float}
+\usepackage{graphics}
+\usepackage{graphicx}
+\usepackage{epsfig}
+\usepackage{indentfirst}
+\usepackage{amsmath, amsfonts, amssymb, amsthm, mathtools}
+\usepackage{url}
+\usepackage{csquotes}
+\usepackage{caption}
+\usepackage{subcaption}
+% Ambientes pré-definidos
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem{proposition}{Proposition}[section]
+\newtheorem{definition}{Definition}[section]
+\newtheorem{remark}{Remark}[section]
+\newtheorem{corollary}{Corollary}[section]
+\newtheorem{teorema}{Teorema}[section]
+\newtheorem{lema}{Lema}[section]
+\newtheorem{prop}{Proposi\c{c}\~ao}[section]
+\newtheorem{defi}{Defini\c{c}\~ao}[section]
+\newtheorem{obs}{Observa\c{c}\~ao}[section]
+\newtheorem{cor}{Corol\'ario}[section]
+
+% ref bibliográficas
+\usepackage[backend=biber, style=numeric-comp]{biblatex}
+\addbibresource{refs.bib}
+\DeclareTextFontCommand{\emph}{\boldmath\bfseries}
+\DefineBibliographyStrings{brazil}{phdthesis = {Tese de doutorado}}
+\DefineBibliographyStrings{brazil}{mathesis = {Disserta\c{c}\~{a}o de mestrado}}
+\DefineBibliographyStrings{english}{mathesis = {Master dissertation}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% TÍTULO E AUTORAS(ES)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\title{Técnicas de Aprendizado de Máquina para Classificação de Células Mamárias Cancerígenas}
+
+
+\author{
+    {\large Lucas R. Pereira}\thanks{l251341@dac.unicamp.br},  \\
+    {\small IMECC/UNICAMP, Campinas, SP} \\
+}
+\criartitulo
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% TEXTO
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{abstract}
+{\bf Resumo}.
+Este artigo visa aprimorar as técnicas de Machine Learning para a classificação de câncer de mama, utilizando um conjunto de dados fornecido pelos professores William Nick Street, William H. Wolberg e Olvi L. Mangasarian. Esse conjunto de dados contém medições nucleares de células cancerígenas, onde foram selecionadas as características mais relevantes para modelagem. Posteriormente, aplicamos métodos de regressão logística e máquina de suporte vetorial (SVM) para a classificação dessas células. Os resultados obtidos demonstraram um desempenho notável, com acurácia, precisão e revocação iguais a 98,25\%, 100,00\% e 97,06\% respectivamente, utilizando a regressão logística e utilizando (SVM) obtemos os seguintes resultados de acurácia precisão e revocação, 97,37\%, 98,51\% e 97,06\% . Esses resultados evidenciam a capacidade significativa do modelo na classificação eficaz de células cancerígenas. Esses avanços são promissores para o campo da detecção precoce de câncer de mama e têm o potencial de contribuir para o desenvolvimento de ferramentas mais precisas e confiáveis no diagnóstico dessa doença crítica.
+
+Este artigo visa contribuir com o trabalho de classificação de células mamárias cancerígenas realizado pelos professores William Nick Street, William H. Wolberg e Olvi L. Mangasaria utilizando métodos de classificação modernos. O conjunto de dados contém medições nucleares das células em relação ao formato, tamanho e textura, contando com 10 características para cada núcleo como valor médio, pior caso e erro padrão de cada medição.
+
+Para a classificação utilizamos métodos lineares como a regressão logística e máquina de suporte vetorial linear e não lineares como o Gradient Boosting, o qual se baseia em técnicas de ensemble. Utilizando os modelos lineares obtemos acurácias iguais no conjunto de validação igual a 
+
+
+\noindent
+{\bf Palavras-chave}. Câncer de mama, SVM, Regressão Logística, Boosting, Aprendizado de máquina.
+\end{abstract}
+
+\section{Introdução}
+
+No Brasil, excluídos os tumores de pele não melanoma, o câncer de mama é o mais
+incidente em mulheres de todas as regiões, com taxas mais altas nas regiões Sul e Sudeste.
+Para cada ano do triênio 2023-2025 foram estimados 73.610 casos novos, o que representa
+uma taxa ajustada de incidência de 41,89 casos por 100.000 mulheres \cite{INCA}. 
+
+% Neste artigo, empregamos técnicas de aprendizado de máquina, incluindo Máquinas de Suporte Vetorial (SVM) e Regressão Logística, para classificar tumores de mama. Utilizamos o conjunto de dados do estudo 'Nuclear Feature Extraction for Breast Tumor Diagnosis' disponibilizado por William Nick Street, William H. Wolberg e Olvi L. Mangasarian para realizar nossa análise
+
+Para auxiliar a identificação de tal enfermidade, utilizamos de técnicas de aprendizado de máquina como as máquinas de suporte vetorial (SVM, do inglês \textit{support vector machine}) e regressão logística, ambas técnicas utilizadas para classificação binária nas categorias malignica e benigna. O conjunto de dados utilizado baseia-se no trabalho \textit{Nuclear feature extraction for breast tumor diagnosis} desenvolvido pelos professores William Nick Street, William H. Wolberg e Olvi L. Mangasarian, os quais disponibilizaram publicamente os dados que será utilizado no decorrer do artigo.
+
+\section{Modelo}
+Para a classificação, utilizamos a regressão logística e a máquina de suporte vetorial (SVM) através da biblioteca \textit{scikitlearn} integrada ao \textit{Python}. Utilizando a regressão logística, realizamos o treinamento com o auxílio do parâmetro de regularização \textit{Ridge}. A regularização Ridge ajuda a reduzir o overfitting, que é o fenômeno em que um modelo se ajusta demais aos dados de treinamento e, consequentemente, não generalizando bem para novos dados, ainda, assim, utilizamos o solver \textit{Newton-Cholesky} devido a alta correlação entre os dados o qual foi medido utilizando o coeficiente de correlação de Kendall, que é robusto em relação a "outliers" e não assume uma distribuição específica dos dados. Foi utilizado o solver "newton-cholesky" devido a convergência rápida em muitos casos, isso significa que ele pode encontrar os coeficientes do modelo de regressão logística mais rapidamente em comparação com outros solvers e tende a oferecer uma alta precisão na estimativa dos coeficientes do modelo. Isso é particularmente útil quando a precisão dos coeficientes é crítica, como em aplicações médicas, por fim a técnica de regressão logística foi treinada em 1000 vezes variando o parâmetro parâmetro de regularização $C$ da através da ferramenta \textit{GridSearch}, obtendo o valor $C=26.5$ como melhor parâmetro de regularização o qual desempenhou um ótimo resultado no conjunto de validação, não classificando nenhuma célula maligna como benigna.
+\subsection{Regressão Logística}
+Para o classificador da regressão logística, dado o conjunto de treinamento\\ $\mathcal{T} =\{(\boldsymbol{x}_1, y_1), (\boldsymbol{x}_2, y_2),\dots, (\boldsymbol{x}_{569}, y_{569})\}\subset\mathbb{R}^{30}\times\{0,1\}$, o vetor de parâmetro $\boldsymbol{\theta}=(\theta_0, \theta_1, \dots,\theta_{30})\in\mathbb{R}^{30+1}$ da regressão logística pode ser determinado minimizando a entropia binária cruzada dada por
+\begin{equation}
+    \mathcal{L}(\boldsymbol{\theta}) = -\frac{1}{30}\sum\limits_{i=1}^{30}[y_i\log{(\hat{p}_i)} + (1-y_i)\log{(1-\hat{p}_i)}]
+\end{equation}
+em que $\hat{p}_i=f_{\boldsymbol{\theta}}(\boldsymbol{x}_i)$ representa a probabilidade estimada pelo modelo de $\boldsymbol{x}_i$ pertencer a classe 1, onde $f_{\boldsymbol{\theta}}(x) = \sigma (\theta_0 + \theta_1x_1 + \dots + \theta_{30}x_{30})$ em que a função logística $\sigma:\mathbb{R}\to[0, 1]$ é dada por
+\begin{equation}
+    \sigma(t)=\frac{1}{1 + e^{-t}}
+\end{equation}
+Note que a probabilidade de $\boldsymbol{x}$ pertencer a outra classe é $1-f_{\theta}(\boldsymbol{x})$. Logo podemos definir um classificador binário $\phi:\mathbb{R}^n\to\{0, 1\}$ como segue:
+\begin{equation}
+    \phi(\boldsymbol{x})=\left\{\begin{array}{cr}
+         1&  f_{\boldsymbol{\theta}}(\boldsymbol{\theta})\geq 0.5\\
+         0& \text{caso contrário}
+    \end{array}\right.
+\end{equation}
+
+Implementando a regressão logística, obtemos os seguintes resultados na Figura \ref{reglog}, em que (C.V.) e (C.T.) representam o conjunto de validação e o conjunto de precisão respectivamente.
+
+% \begin{figure}[H]
+% \centering
+% \includegraphics[scale=0.73]{imagens/Regressão_Logística.png}
+% \caption{ {\small Implementação da regressão logística, os dois gráficos superiores mostram o desempenho do classificador e os dois inferiores é a matriz de confusão e o gráfico do raio médio em função do perímetro o qual foi escolhido devido a alta  correlação entre essas característica pelo coeficiente de correlação de Kendall.}}
+% \label{reglog}
+% \end{figure}
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}[t]{0.49\textwidth}
+        \centering
+        \includegraphics[width=1\textwidth]{imagens/PrecisaoxRevocacao.png}
+        \caption{Gráfico que representa o desempenho de um classificador, mostrando as métricas de precisão e revocação em relação a diferentes valores do limiar de decisão $t$.}
+        \label{subfig1}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.49\textwidth}
+        \centering
+        \includegraphics[width=1\textwidth]{imagens/CurvaROC.png}
+        \caption{Gráfico da curva ROC utilizada para medir o desempenho do classificador, está curva apresenta uma área no conjunto de validação igual a 0,964 indicando o alto desempenho do classificador.}
+        \label{subfig2}
+    \end{subfigure}
+    \bigskip
+    \begin{subfigure}[b]{0.49\textwidth}
+        \centering
+        \includegraphics[width=1\textwidth]{imagens/Matrizdeconfusao.png}
+        \caption{A matriz de confusão é uma representação fundamental utilizada na análise de classificações de conjuntos, proporcionando uma visão detalhada da precisão das classificações, incluindo tanto as instâncias corretamente classificadas quanto as incorretamente classificadas.}
+        \label{subfig3}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.49\textwidth}
+        \centering
+        \includegraphics[width=1\textwidth]{imagens/raioxperimetro.png}
+        \caption{O gráfico apresenta o perímetro médio em relação ao raio médio de células. As células malignas corretamente classificadas estão destacadas em vermelho, as células benignas corretamente classificadas em azul, as células incorretamente classificadas como benignas em amarelo, e as células incorretamente classificadas como malignas em cor lima.}
+        \label{subfig4}
+    \end{subfigure}
+    \caption{Implementação da técnica de aprendizado de máquina regressão logística para classificação binária.}
+    \label{reglog}
+\end{figure}
+
+
+A Figura \ref{subfig1} mostra o desempenho do classificador, a alta precisão evita a classificação incorreta de exemplos malignos como benignos e a alta revocação é importante pois indica que o modelo está minimizando a quantidade de casos de câncer de mama maligno que estão passando despercebidos (falsos negativos). No contexto de um classificador de câncer de mama, ter uma alta taxa de revocação é geralmente desejável, uma vez que é mais crítico não perder casos de câncer maligno, mesmo que isso signifique que algumas das classificações sejam falsos positivos (ou seja, classificando algumas células benignas como malignas), em um sistema de detecção de doenças, é essencial que o modelo identifique corretamente o máximo de casos positivos possível, mesmo que isso signifique aceitar alguns falsos positivos. Na Figura \ref{subfig2} temos a curva ROC, a área sob a curva ROC (AUC-ROC) é uma métrica comum para resumir o desempenho global do modelo. Quanto maior a AUC-ROC, melhor o modelo é em distinguir entre as classes. Um valor de AUC-ROC de 0,5 indica que o modelo não tem capacidade discriminativa, enquanto um valor de 1,0 representa um modelo perfeito em nossos experimentos, obtemos o valor da área igual a 0,985 no conjunto de validação o que evidência o alto desempenho do classificador.
+
+\begin{table}[H]
+\caption{ {\small Desempenho da regressão logística.}}
+\centering
+\begin{tabular}{cccccc}
+\hline
+Acurácia & Precisão  & Revocação & F1-Score & ROC-Score& Conjunto\\ \hline
+98,25\%      & 100\%  & 97,06\%& 0,9851 &  0,9853 & Validação\\
+96,92\%      & 96,93\%  & 98,27\%& 0,9759 &  0,9642 & Treinamento\\
+\hline
+\end{tabular}\label{tabela01}
+\end{table}
+
+
+
+\subsection{Máquina de suporte vetorial (SVM)}
+SVM linear define um classificador cuja função de decisão é caracterizada pelo hiperplano que maximiza a margem de separação entre as classes. Utilizando o conjunto $\mathcal{T}=\{(\boldsymbol{x}_i, y_i):i=1, \dots, 569\}\subset\mathbb{R}^{30}\times\{-1, 1\}$, vamos assumir que os pares $(\boldsymbol{x}_i, y_i)$ são linearmente separáveis. A SVM linear é obtida maximizando a margem de separação entre as classes, o vetor de pesos $\boldsymbol{w}\in\mathbb{R}^{30}$ e o viés $b\in\mathbb{R}$ são determinados resolvendo o problema de otimização:
+\begin{equation}
+    \left\{
+    \begin{array}{cc}
+        \text{maximize}_{\boldsymbol{w}, b}\; 2r  \\
+        \text{sujeito à} & \boldsymbol{w}^{T}\boldsymbol{x}_i + b\geq r, \forall\boldsymbol{x}_i\in\mathcal{C}^{+}\\
+        & \boldsymbol{w}^{T}\boldsymbol{x}_i + b\leq -r, \forall\boldsymbol{x}_i\in\mathcal{C}^{-}
+    \end{array}
+    \right.
+\end{equation}
+onde $\mathcal{C}^{+}=\{\boldsymbol{x}_i:y_i=+1\}$, $\mathcal{C}^{-}=\{\boldsymbol{x}_i:y_i=-1\}$ e $r>0$ define a margem de separação que pode ser escrita em termos de $\boldsymbol{w}$ e $b$:
+\begin{equation}
+    \left\{
+    \begin{array}{cc}
+        \text{minimize}_{\boldsymbol{w}, b}\; \frac{1}{2}\boldsymbol{w}^{T}\boldsymbol{w}  \\
+        \text{sujeito à} & y_i(\boldsymbol{w}^{T}\boldsymbol{x}_i+b)\geq 1, \quad\forall\;i=1, \dots, m
+    \end{array}
+    \right.
+\end{equation}
+As amostras $\boldsymbol{x}_i$ tais que $y_i(\boldsymbol{w}^{T}\boldsymbol{x}_i+b)=1$ são chamado \textbf{vetores de suporte}, pois determinam o hiperplano ótimo.
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}[t]{0.49\textwidth}
+        \centering
+        \includegraphics[width=1\textwidth]{smvimage/PrecisaoxRevocacaoSVM.png}
+        \caption{Gráfico que representa o desempenho de um classificador, mostrando as métricas de precisão e revocação em relação a diferentes valores do limiar de decisão $t$.}
+        \label{subfig1svm}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.49\textwidth}
+        \centering
+        \includegraphics[width=1\textwidth]{smvimage/CurvaROCSVM.png}
+        \caption{Gráfico da curva ROC utilizada para medir o desempenho do classificador, está curva apresenta uma área no conjunto de validação igual a 0,964 indicando o alto desempenho do classificador.}
+        \label{subfig2svm}
+    \end{subfigure}
+    \bigskip
+    \begin{subfigure}[b]{0.49\textwidth}
+        \centering
+        \includegraphics[width=1\textwidth]{smvimage/MatrizdeconfusaoSVM.png}
+        \caption{A matriz de confusão é uma representação fundamental utilizada na análise de classificações de conjuntos, proporcionando uma visão detalhada da precisão das classificações, incluindo tanto as instâncias corretamente classificadas quanto as incorretamente classificadas.}
+        \label{subfig3svm}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.49\textwidth}
+        \centering
+        \includegraphics[width=1\textwidth]{smvimage/raioxperimetroSVM.png}
+
+        \caption{O gráfico apresenta o perímetro médio em relação ao raio médio de células. As células malignas corretamente classificadas estão destacadas em vermelho, as células benignas corretamente classificadas em azul, as células incorretamente classificadas como benignas em amarelo, e as células incorretamente classificadas como malignas em cor lima.}
+        \label{subfig4svm}
+    \end{subfigure}
+    \caption{Implementação da técnica de aprendizado de máquina SVM para classificação binária envolvendo células cancerígenas.}
+    \label{svm}
+\end{figure}
+
+\begin{table}[H]
+\caption{ {\small Desempenho da regressão logística.}}
+\centering
+\begin{tabular}{cccccc}
+\hline
+Acurácia & Precisão  & Revocação & F1-Score & ROC-Score& Conjunto\\ \hline
+98,25\%      & 100\%  & 97,06\%& 0,9851 &  0,9853 & Validação\\
+96,92\%      & 96,93\%  & 98,27\%& 0,9759 &  0,9642 & Treinamento\\
+\hline
+\end{tabular}\label{tabela02}
+\end{table}
+
+
+
+% \section{Tabelas e Figuras}
+
+% As(os) autoras(es) podem inserir figuras e tabelas no artigo. Elas devem estar dispostas próximas de suas referências no texto.
+
+% \subsection{Inserção de Tabelas}
+
+% A inserção de tabela deve ser feita com o ambiente \verb!table!, sendo enumerada, disposta horizontalmente centralizada, próxima de sua referência no texto, e a legenda imediatamente acima dela. Por exemplo, consulte a Tabela \ref{tabela01}.
+
+% \begin{table}[H]
+% \caption{ {\small Categorias dos trabalhos.}}
+% \centering
+% \begin{tabular}{ccc}
+% \hline
+% Categoria do trabalho  & Número de páginas & Tipo do trabalho\\ \hline
+% 1          & 2  & $A$, $B$ e $C$    \\
+% 2          & entre 5 e 7  & apenas $C$ \\
+% \hline
+% \end{tabular}\label{tabela01}
+% \end{table}
+
+% \subsection{Inserção de Figuras}
+
+% A inserção de figura deve ser feita com o ambiente \verb!figure!, ela deve estar enumerada, disposta horizontalmente centralizada, próxima de sua referência no texto, e legenda imediatamente abaixo dela. \emph{Quando não própria, deve-se indicar/referências a fonte.} Por exemplo, consulte a Figura \ref{figura01}.
+
+% \begin{figure}[H]
+% \centering
+% \includegraphics[scale=.7]{imagens/Regressão_Logística.png}
+% \caption{ {\small Exemplo de imagem. Fonte: indicar.}}
+% \label{figura01}
+% \end{figure}
+
+\section{Sobre as Referências Bibliográficas}
+
+As referências bibliográficas devem ser inseridas conforme especificado neste padrão, sendo que serão automaticamente geradas em ordem alfabética pelo sobrenome do primeiro autor. Este {\it template} fornece suporte para a inserção de referências bibliográficas com o Bib\LaTeX{}. Os dados de cada referência do trabalho devem ser adicionados no arquivo \verb+refs.bib+ e a indicação da referência no texto deve ser inserida com o comando \verb+\cite+. Seguem alguns exemplos de referências: livro \cite{Boldrini}, artigos publicados em periódicos \cite{Contiero,Cuminato}, capítulo de livro \cite{daSilva}, dissertação de mestrado \cite{Diniz}, tese de doutorado \cite{Mallet}, livro publicado dentro de uma série \cite{Gomes}, trabalho publicado em anais de eventos \cite{Santos}, {\it website} e outros \cite{CNMAC}. Por padrão, os nomes de todos os autores da obra citada aparecem na bibliografia. Para obras com mais de três autores, é também possível indicar apenas o nome do primeiro autor, seguido da expressão et al. Para implementar essa alternativa, basta remover ``\verb+,maxnames=50+'' do comando correspondente do código-fonte. Sempre que disponível forneça o DOI, ISBN ou ISSN, conforme o caso.
+
+\section{Considerações Finais}
+
+Esta seção é reservada às principais conclusões e considerações finais do trabalho.
+
+\section*{Agradecimentos (opcional)}
+
+Seção reservada aos agradecimentos dos autores, caso for pertinente. Por exemplo, agradecimento a fomentos. Se os autores optarem pela inclusão de Agradecimentos, a palavra ``(opcional)'' deve ser removida do título da seção. Esta seção não é numerada e deve ser disposta entre a última seção do corpo do texto e as Referências.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% REFS BIBLIOGRÁFICAS
+% POR FAVOR, NÃO ALTERAR
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\printbibliography
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\end{document}
+
+
+
+
+

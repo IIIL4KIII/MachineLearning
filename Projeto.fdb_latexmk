@@ -1,0 +1,15 @@
+# Fdb version 4
+["pdflatex"] 1699641355 "/home/lucas-renan/Desktop/Github/MachineLearning/Projeto.tex" "Projeto.pdf" "Projeto" 1699641356 2
+  "/etc/texmf/web2c/texmf.cnf" 1694121307 475 c0e671620eb5563b2130f56340a5fde8 ""
+  "/home/lucas-renan/Desktop/Github/MachineLearning/Projeto.tex" 1699641354 21157 d5e151e7ed641afa340346e542b4d60f ""
+  "/usr/share/texlive/texmf-dist/web2c/texmf.cnf" 1676468108 39561 34c98e380bf7c7201ee6a7909aff625a ""
+  "/usr/share/texmf/web2c/texmf.cnf" 1676468108 39561 34c98e380bf7c7201ee6a7909aff625a ""
+  "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1694121376 7880900 7f1744ee2f1078bfc1539cf931578023 ""
+  "Projeto.aux" 1699641355 32 3985256e7290058c681f74d7a3565a19 "pdflatex"
+  "Projeto.tex" 1699641354 21157 d5e151e7ed641afa340346e542b4d60f ""
+  "pssbmac.cls" 0 -1 0 ""
+  (generated)
+  "Projeto.aux"
+  "Projeto.log"
+  "Projeto.pdf"
+  (rewritten before read)
